@@ -1,6 +1,9 @@
 <template>
   <div class="right-panel">
-    <div v-for="list in lists" :key="list">
+    <div 
+      v-for="list in lists" 
+      :key="list"
+    >
       <list-block :list="list" />
     </div>
   </div>
@@ -21,9 +24,12 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .right-panel {
   border: 1px solid black;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 </style>

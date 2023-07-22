@@ -5,8 +5,8 @@
       <span v-else>˅</span>
     </div>
     <label>
-      <input type="checkbox" v-model="isListSelected">
-      {{ list }}
+      <input type="checkbox">
+      {{ list.title }}
     </label>
   </div>
   <div v-if="isOpen">
@@ -31,8 +31,7 @@ export default {
   },
   data() {
     return {
-      isOpen: false,
-      isListSelected: false
+      isOpen: false
     }
   },
   computed: {

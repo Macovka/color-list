@@ -2,7 +2,24 @@ import { createStore } from 'vuex'
 
 const store = createStore({
   state: {
-    lists: ['List 1', 'List 2', 'List 3', 'List 4'],
+    lists: [
+      {
+        title: 'List 1',
+        selected: false
+      },
+      {
+        title: 'List 2',
+        selected: false
+      },
+      {
+        title: 'List 3',
+        selected: false
+      },
+      {
+        title: 'List 4',
+        selected: false
+      },
+    ],
     items: [
       {
         title: 'Item 1',

@@ -1,7 +1,7 @@
 <template>
   <div class="list-block">
     <div class="list-block__title-wrapper">
-      {{ list }}
+      {{ list.title }}
       <button>Премешать</button>
     </div>
     <div>

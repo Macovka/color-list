@@ -5,7 +5,11 @@
       <button>Премешать</button>
     </div>
     <div class="list-block__squares">
-      <div v-for="index in quantity" :key="index" class="square"></div>
+      <div 
+        v-for="index in quantity" 
+        :key="index" class="square" 
+        :style="{ backgroundColor: color }"
+      ></div>
     </div>
   </div>
 </template>
@@ -48,6 +52,5 @@
 .square {
   width: 10px;
 	height: 10px;
-	background: red;
 }
 </style>

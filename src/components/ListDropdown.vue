@@ -10,8 +10,8 @@
     </label>
   </div>
   <div v-if="isOpen">
-    <div v-for="item in items" :key="item">
-      <list-item :item="item" />
+    <div v-for="title in titles" :key="title">
+      <list-item :title="title" />
     </div>
   </div>
 </template>
@@ -36,8 +36,8 @@ export default {
     }
   },
   computed: {
-    items () {
-      return this.$store.state.items
+    titles () {
+      return this.$store.state.items.map(item => item.title);
     }
   },
   methods: {

@@ -3,12 +3,12 @@
     <div>
       <label>
         <input type="checkbox">
-        {{ item }}
+        {{ title }}
       </label>
     </div>
     <div>
-      <input type="number" v-model="quantity">
-      <input type="color" v-model="color">
+      <input type="number" :value="quantity">
+      <input type="color" :value="color">
     </div>
   </div>
 </template>
@@ -18,15 +18,19 @@
 
   export default {
     props: {
-      item: {
+      title: {
         type: String,
-        reqired: true
+        required: true
       }
     },
     computed: {
       ...mapState({
-        quantity: state => state.quantity,
-        color: state => state.color,
+        quantity(state) {
+          return state.items.find(item => item.title === this.title).quantity;
+        },
+        color(state) {
+          return state.items.find(item => item.title === this.title).color;
+        },
       }),
     }
   }

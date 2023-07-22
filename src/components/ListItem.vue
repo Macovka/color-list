@@ -3,7 +3,7 @@
     <div>
       <label>
         <input type="checkbox">
-        {{ title }}
+        {{ item.title }}
       </label>
     </div>
     <div>
@@ -18,18 +18,18 @@
 
   export default {
     props: {
-      title: {
-        type: String,
+      item: {
+        type: Object,
         required: true
       }
     },
     computed: {
       ...mapState({
         quantity(state) {
-          return state.items.find(item => item.title === this.title).quantity;
+          return state.items.find(item => item === this.item).quantity;
         },
         color(state) {
-          return state.items.find(item => item.title === this.title).color;
+          return state.items.find(item => item === this.item).color;
         }
       })
     }

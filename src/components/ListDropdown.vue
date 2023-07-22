@@ -5,13 +5,16 @@
       <span v-else>˅</span>
     </div>
     <label>
-      <input type="checkbox" :value="list.selected" @change="toggleListSelect(list)">
+      <input type="checkbox" 
+        :value="list.selected" 
+        @change="toggleListSelect(list)"
+      >
       {{ list.title }}
     </label>
   </div>
   <div v-if="isOpen">
     <div v-for="item in items" :key="item">
-      <list-item :item="item" />
+      <list-item :item="item" :list="list"/>
     </div>
   </div>
 </template>
@@ -44,8 +47,8 @@
       toggleList() {
         this.isOpen = !this.isOpen;
       },
-      toggleListSelect(currentList) {
-        this.$store.commit('toggleSelected', currentList)
+      toggleListSelect(currentList) {       
+        this.$store.commit('toggleListSelected', currentList);
       }
     }
   }

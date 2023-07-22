@@ -27,7 +27,7 @@
   export default {
     props: {
       list: {
-        type: String,
+        type: Object,
         required: true
       }
     },

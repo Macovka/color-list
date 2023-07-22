@@ -2,7 +2,11 @@
   <div class="list-item">
     <div>
       <label>
-        <input type="checkbox">
+        <input 
+          type="checkbox" 
+          :value="item.selected"
+          @change="toggleItemSelect(item)"
+        >
         {{ item.title }}
       </label>
     </div>
@@ -16,9 +20,18 @@
 <script>
   export default {
     props: {
+      list: {
+        type: Object,
+        reqired: true
+      },
       item: {
         type: Object,
         required: true
+      }
+    },
+    methods: {
+      toggleItemSelect(currentItem) {
+        this.$store.commit('toggleItemSelected', currentItem);
       }
     }
   }

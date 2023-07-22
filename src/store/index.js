@@ -24,29 +24,37 @@ const store = createStore({
       {
         title: 'Item 1',
         quantity: 10,
-        color: '#f50505'
+        color: '#f50505',
+        selected: false
       },
       {
         title: 'Item 2',
         quantity: 16,
-        color: '#FFFF06'
+        color: '#FFFF06',
+        selected: false
       },
       {
         title: 'Item 3',
         quantity: 40,
-        color: '#48FF06'
+        color: '#48FF06',
+        selected: false
       },
       {
         title: 'Item 4',
         quantity: 0,
-        color: '#0616FF'
+        color: '#0616FF',
+        selected: false
       }
     ]
   },
   mutations: { 
-    toggleSelected(state, currentList) {
+    toggleListSelected(state, currentList) {
       state.list = currentList;
-      state.list.selected = !state.list.selected
+      state.list.selected = !state.list.selected;
+    },
+    toggleItemSelected(state, currentItem) {
+      state.item = currentItem;
+      state.item.selected = !state.item.selected;
     },
   },
   getters: { 

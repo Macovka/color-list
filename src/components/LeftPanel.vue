@@ -1,6 +1,8 @@
 <template>
   <div class="left-panel">
-    <list-dropdown />
+    <div v-for="list in lists" :key="list">
+      <list-dropdown :list="list" />
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,12 @@
   export default {
     components: {
       ListDropdown
-    }
+    },
+    data() {
+      return {
+        lists: ['List 1', 'List 2', 'List 3', 'List 4']
+      }
+    },
   }
 </script>
 

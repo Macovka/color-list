@@ -1,12 +1,12 @@
 <template>
   <div>
-    <input type="checkbox" v-model="isOpen" name="list-1">
-    <label for="list-1">List 1</label>
-    <ul v-if="isOpen">
-      <li v-for="item in items" :key="item">
+    <input type="checkbox" v-model="isOpen" name="list">
+    <label for="list">{{ list }}</label>
+    <div v-if="isOpen">
+      <div v-for="item in items" :key="item">
         <list-item :item="item" />
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,6 +17,12 @@ export default {
   components: {
     ListItem
   },
+  props: {
+      list: {
+        type: String,
+        reqired: true
+      }
+    },
   data() {
     return {
       isOpen: false,

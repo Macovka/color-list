@@ -4,7 +4,7 @@
       <label>
         <input 
           type="checkbox" 
-          :value="item.selected"
+          :checked="item.selected"
           @change="toggleItemSelect(item)"
         >
         {{ item.title }}
@@ -32,9 +32,6 @@
     methods: {
       toggleItemSelect(currentItem) {
         this.$store.commit('toggleItemSelected', currentItem);
-      },
-      setSelectValue () {
-
       }
     }
   }

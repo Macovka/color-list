@@ -6,7 +6,7 @@
     </div>
     <label>
       <input type="checkbox" 
-        :value="list.selected" 
+        :checked="list.selected" 
         @change="toggleListSelect(list)"
       >
       {{ list.title }}
@@ -43,6 +43,11 @@
       },
       toggleListSelect(currentList) {      
         this.$store.commit('toggleListSelected', currentList);
+        if (this.list.selected) {
+          this.$store.commit('setItemSelectValue', { currentList: this.list, value: true });
+        } else {
+          this.$store.commit('setItemSelectValue', { currentList: this.list, value: false });
+        }
       }
     }
   }

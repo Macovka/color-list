@@ -127,12 +127,14 @@ const store = createStore({
   },
   mutations: { 
     toggleListSelected(state, currentList) {
-      state.list = currentList;
-      state.list.selected = !state.list.selected;
+      currentList.selected = !currentList.selected;
     },
     toggleItemSelected(state, currentItem) {
-      state.item = currentItem;
-      state.item.selected = !state.item.selected;
+      currentItem.selected = !currentItem.selected;
+    },
+    setItemSelectValue(state, payload) {
+      const { currentList, value } = payload;
+      currentList.items.forEach(item => item.selected = value);
     }
   },
   getters: { 

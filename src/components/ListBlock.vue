@@ -4,7 +4,7 @@
       {{ list.title }}
       <button>Премешать</button>
     </div>
-    <div>
+    <div v-if="list.selected">
       <div 
         v-for="item in items" 
         :key="item" 

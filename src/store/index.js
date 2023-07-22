@@ -44,7 +44,10 @@ const store = createStore({
     ]
   },
   mutations: { 
-    
+    toggleSelected(state, currentList) {
+      state.list = currentList;
+      state.list.selected = !state.list.selected
+    },
   },
   getters: { 
     

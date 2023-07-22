@@ -7,31 +7,19 @@
       </label>
     </div>
     <div>
-      <input type="number" :value="quantity">
-      <input type="color" :value="color">
+      <input type="number" :value="item.quantity">
+      <input type="color" :value="item.color">
     </div>
   </div>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
-
   export default {
     props: {
       item: {
         type: Object,
         required: true
       }
-    },
-    computed: {
-      ...mapState({
-        quantity(state) {
-          return state.items.find(item => item === this.item).quantity;
-        },
-        color(state) {
-          return state.items.find(item => item === this.item).color;
-        }
-      })
     }
   }
 </script>

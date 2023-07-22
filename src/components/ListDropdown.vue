@@ -5,7 +5,7 @@
       <span v-else>˅</span>
     </div>
     <label>
-      <input type="checkbox">
+      <input type="checkbox" :value="list.selected" @change="toggleListSelect(list)">
       {{ list.title }}
     </label>
   </div>
@@ -17,34 +17,38 @@
 </template>
 
 <script>
-import ListItem from './ListItem.vue';
+  import ListItem from './ListItem.vue';
+  import { mapState } from 'vuex'
 
-export default {
-  components: {
-    ListItem
-  },
-  props: {
-    list: {
-      type: String,
-      reqired: true
-    }
-  },
-  data() {
-    return {
-      isOpen: false
-    }
-  },
-  computed: {
-    items () {
-      return this.$store.state.items
-    }
-  },
-  methods: {
-    toggleList() {
-      this.isOpen = !this.isOpen;
+  export default {
+    components: {
+      ListItem
+    },
+    props: {
+      list: {
+        type: Object,
+        reqired: true
+      }
+    },
+    data() {
+      return {
+        isOpen: false
+      }
+    },
+    computed: {
+      ...mapState({
+        items: state => state.items,
+      }),
+    },
+    methods: {
+      toggleList() {
+        this.isOpen = !this.isOpen;
+      },
+      toggleListSelect(currentList) {
+        this.$store.commit('toggleSelected', currentList)
+      }
     }
   }
-}
 </script>
 
 <style scoped>

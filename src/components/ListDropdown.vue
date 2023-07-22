@@ -13,7 +13,7 @@
     </label>
   </div>
   <div v-if="isOpen">
-    <div v-for="item in items" :key="item">
+    <div v-for="item in list.items" :key="item">
       <list-item :item="item" :list="list"/>
     </div>
   </div>
@@ -21,7 +21,6 @@
 
 <script>
   import ListItem from './ListItem.vue';
-  import { mapState } from 'vuex'
 
   export default {
     components: {
@@ -38,16 +37,11 @@
         isOpen: false
       }
     },
-    computed: {
-      ...mapState({
-        items: state => state.items,
-      }),
-    },
     methods: {
       toggleList() {
         this.isOpen = !this.isOpen;
       },
-      toggleListSelect(currentList) {       
+      toggleListSelect(currentList) {      
         this.$store.commit('toggleListSelected', currentList);
       }
     }

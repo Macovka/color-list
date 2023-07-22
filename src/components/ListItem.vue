@@ -32,6 +32,9 @@
     methods: {
       toggleItemSelect(currentItem) {
         this.$store.commit('toggleItemSelected', currentItem);
+      },
+      setSelectValue () {
+
       }
     }
   }

@@ -6,35 +6,29 @@
     </div>
     <div v-if="list.selected">
       <div 
-        v-for="item in items" 
+        v-for="item in list.items" 
         :key="item" 
-        class="list-block__squares"
       >
-        <div 
+      <div v-if="item.selected" class="list-block__squares">
+        <div
           v-for="index in item.quantity" 
           :key="index"
           class="square" 
           :style="{ backgroundColor: item.color }"
         ></div>
       </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
-
   export default {
     props: {
       list: {
         type: Object,
         required: true
       }
-    },
-    computed: {
-      ...mapState({
-        items: state => state.items
-      }),
     }
   }
 </script>

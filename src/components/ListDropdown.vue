@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <input type="checkbox" v-model="isOpen" name="list">
-    <label for="list">{{ list }}</label>
-    <div v-if="isOpen">
-      <div v-for="item in items" :key="item">
-        <list-item :item="item" />
-      </div>
+  <div class="title-wrapper">
+    <div class="dropdown-arrow" @click="toggleList">
+      <span v-if="!isOpen">></span>
+      <span v-else>˅</span>
+    </div>
+    <label>
+      <input type="checkbox">
+      {{ list }}
+    </label>
+  </div>
+  <div v-if="isOpen">
+    <div v-for="item in items" :key="item">
+      <list-item :item="item" />
     </div>
   </div>
 </template>
@@ -34,10 +40,21 @@ export default {
     areAllItemsSelected() {
       return this.selectedItems.length === this.items.length;
     }
+  },
+  methods: {
+    toggleList() {
+      this.isOpen = !this.isOpen;
+    }
   }
 }
 </script>
 
 <style scoped>
+.dropdown-arrow {
+  cursor: pointer;
+}
 
+.title-wrapper {
+  display: flex;
+}
 </style>

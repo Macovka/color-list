@@ -4,13 +4,16 @@
       <span v-if="!isOpen">></span>
       <span v-else>˅</span>
     </div>
-    <label>
-      <input type="checkbox" 
-        :checked="list.selected" 
-        @change="toggleListSelect(list)"
-      >
-      {{ list.title }}
-    </label>
+    <div>
+      <label>
+        <input type="checkbox" 
+          :checked="list.selected" 
+          @change="toggleListSelect"
+          :class="{dot: list.partSelect}"
+        >
+        {{ list.title }}
+      </label>
+    </div>   
   </div>
   <div v-if="isOpen">
     <div v-for="item in list.items" :key="item">
@@ -37,19 +40,54 @@
         isOpen: false
       }
     },
+    computed: {
+      items () {
+        return this.list.items;
+      },
+      partSelect () {
+        return this.list.partSelect;
+      }
+    },
     methods: {
       toggleList() {
         this.isOpen = !this.isOpen;
       },
-      toggleListSelect(currentList) {      
-        this.$store.commit('toggleListSelected', currentList);
+      toggleListSelect() {
         if (this.list.selected) {
-          this.$store.commit('setItemSelectValue', { currentList: this.list, value: true });
-        } else {
+          if (this.partSelect) {
+            this.$store.commit('setItemSelectValue', { currentList: this.list, value: true });
+          } else {
+            this.$store.commit('setListSelectValue', { currentList: this.list, value: false });
           this.$store.commit('setItemSelectValue', { currentList: this.list, value: false });
+          }         
+        } else {
+          this.$store.commit('setListSelectValue', { currentList: this.list, value: true });
+          this.$store.commit('setItemSelectValue', { currentList: this.list, value: true });
         }
       }
-    }
+    },
+    watch: {
+      list: {
+        handler(newList) {
+          const selectValues = newList.items.map(item => item.selected);
+          const isAnyUnselect = selectValues.includes(false);
+          const isAnySelected = selectValues.includes(true);
+
+          if (!isAnyUnselect) {
+            this.$store.commit('setPartSelect', { currentList: this.list, value: false });
+            if (!newList.selected) {
+              this.$store.commit('setListSelectValue', { currentList: this.list, value: true });
+            }
+          } else if (!isAnySelected) {
+            this.$store.commit('setPartSelect', { currentList: this.list, value: false });
+            if (newList.selected) {
+              this.$store.commit('setListSelectValue', { currentList: this.list, value: false });
+            }
+          }
+        },
+        deep: true
+      }
+    },
   }
 </script>
 
@@ -61,4 +99,5 @@
 .title-wrapper {
   display: flex;
 }
+
 </style>

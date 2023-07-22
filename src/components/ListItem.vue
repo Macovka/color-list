@@ -8,7 +8,7 @@
     </div>
     <div>
       <input type="number" v-model="quantity">
-      <input type="text" v-model="color">
+      <input type="color" v-model="color">
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@
     data () {
       return {
         quantity: 10,
-        color: 'red'
+        color: '#f50505'
       }
     }
   }

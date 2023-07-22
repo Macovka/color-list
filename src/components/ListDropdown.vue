@@ -4,15 +4,19 @@
     <label for="list-1">List 1</label>
     <ul v-if="isOpen">
       <li v-for="item in items" :key="item">
-        <input type="checkbox" :id="item" name="item">
-        <label :for="item">{{ item }}</label>
+        <list-item :item="item" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import ListItem from './ListItem.vue';
+
 export default {
+  components: {
+    ListItem
+  },
   data() {
     return {
       isOpen: false,

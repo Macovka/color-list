@@ -4,10 +4,15 @@
       {{ list }}
       <button>Премешать</button>
     </div>
+    <div class="list-block__squares">
+      <div v-for="index in quantity" :key="index" class="square"></div>
+    </div>
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
     props: {
       list: {
@@ -15,6 +20,12 @@
         reqired: true
       }
     },
+    computed: {
+      ...mapState({
+        quantity: state => state.quantity,
+        color: state => state.color,
+      }),
+    }
   }
 </script>
 
@@ -27,5 +38,16 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__squares {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.square {
+  width: 10px;
+	height: 10px;
+	background: red;
 }
 </style>

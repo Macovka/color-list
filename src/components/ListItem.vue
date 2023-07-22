@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item__wrapper">
+  <div class="list-item">
     <div>
       <label>
         <input type="checkbox">
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
     props: {
       item: {
@@ -21,17 +23,17 @@
         reqired: true
       }
     },
-    data () {
-      return {
-        quantity: 10,
-        color: '#f50505'
-      }
+    computed: {
+      ...mapState({
+        quantity: state => state.quantity,
+        color: state => state.color,
+      }),
     }
   }
 </script>
 
 <style scoped>
-.list-item__wrapper {
+.list-item {
   display: flex;
   justify-content: space-between;
 }

@@ -4,12 +4,19 @@
       {{ list }}
       <button>Премешать</button>
     </div>
-    <div class="list-block__squares">
+    <div>
       <div 
-        v-for="index in quantity" 
-        :key="index" class="square" 
-        :style="{ backgroundColor: color }"
-      ></div>
+        v-for="item in items" 
+        :key="item" 
+        class="list-block__squares"
+      >
+        <div 
+          v-for="index in item.quantity" 
+          :key="index"
+          class="square" 
+          :style="{ backgroundColor: item.color }"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
@@ -21,13 +28,12 @@
     props: {
       list: {
         type: String,
-        reqired: true
+        required: true
       }
     },
     computed: {
       ...mapState({
-        quantity: state => state.quantity,
-        color: state => state.color,
+        items: state => state.items
       }),
     }
   }
@@ -45,12 +51,13 @@
 
   &__squares {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
   }
 }
 
 .square {
   width: 10px;
 	height: 10px;
+  margin-right: 2px;
 }
 </style>

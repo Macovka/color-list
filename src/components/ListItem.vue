@@ -30,8 +30,8 @@
         },
         color(state) {
           return state.items.find(item => item.title === this.title).color;
-        },
-      }),
+        }
+      })
     }
   }
 </script>

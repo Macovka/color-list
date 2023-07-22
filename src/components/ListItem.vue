@@ -1,12 +1,14 @@
 <template>
   <div class="list-item__wrapper">
     <div>
-      <input type="checkbox" :id="item" name="item">
-      <label :for="item">{{ item }}</label>
+      <label>
+        <input type="checkbox">
+        {{ item }}
+      </label>
     </div>
     <div>
-      {{ quantity }}
-      {{ color }}
+      <input type="number" v-model="quantity">
+      <input type="text" v-model="color">
     </div>
   </div>
 </template>

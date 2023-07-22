@@ -13,11 +13,11 @@
     components: {
       ListDropdown
     },
-    data() {
-      return {
-        lists: ['List 1', 'List 2', 'List 3', 'List 4']
+    computed: {
+      lists () {
+        return this.$store.state.lists
       }
-    },
+    }
   }
 </script>
 

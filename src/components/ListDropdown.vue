@@ -5,7 +5,7 @@
       <span v-else>˅</span>
     </div>
     <label>
-      <input type="checkbox">
+      <input type="checkbox" v-model="isListSelected">
       {{ list }}
     </label>
   </div>
@@ -24,15 +24,20 @@ export default {
     ListItem
   },
   props: {
-      list: {
-        type: String,
-        reqired: true
-      }
-    },
+    list: {
+      type: String,
+      reqired: true
+    }
+  },
   data() {
     return {
       isOpen: false,
-      items: ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+      isListSelected: false
+    }
+  },
+  computed: {
+    items () {
+      return this.$store.state.items
     }
   },
   methods: {

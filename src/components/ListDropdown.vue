@@ -5,7 +5,7 @@
       <span v-else>˅</span>
     </div>
     <app-checkbox :isChecked="checkboxStatus === 'true'" :isIndeterminate="checkboxStatus === 'part'" @check="checkList" />
-    <h2>{{ list.title }}</h2>
+    <h4>{{ list.title }}</h4>
   </div>
   <div v-if="isOpen">
     <div v-for="item in list.items" :key="item.id">
@@ -47,8 +47,6 @@
     },
     methods: {
       checkList(checked) {
-        // Here you can handle checking/unchecking the whole list
-        // Call Vuex mutation for each item
         this.list.items.forEach(item => {
           this.$store.commit('setItemChecked', { listId: this.list.id, itemId: item.id, checked });
         });
@@ -56,7 +54,7 @@
       toggleList() {
         this.isOpen = !this.isOpen;
       },
-      toggleListSelect() {
+      /*toggleListSelect() {
         if (this.list.selected) {
           if (this.partSelect) {
             this.$store.commit('setItemSelectValue', { currentList: this.list, value: true });
@@ -68,7 +66,7 @@
           this.$store.commit('setListSelectValue', { currentList: this.list, value: true });
           this.$store.commit('setItemSelectValue', { currentList: this.list, value: true });
         }
-      }
+      }*/
     },
     watch: {
       /*list: {

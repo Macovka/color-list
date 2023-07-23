@@ -189,13 +189,12 @@ const store = createStore({
     setItemChecked(state, payload) {
       let { listId, itemId, checked } = payload;
       let list = state.lists.find(list => list.id === listId);
-      console.log(list)
       let item = list.items.find(item => item.id === itemId);
       item.isChecked = checked;
       // Update list's checkboxStatus
       let allChecked = list.items.every(item => item.isChecked);
       let noneChecked = list.items.every(item => !item.isChecked);
-      list.checkboxStatus = allChecked ? true : noneChecked ? '' : 'part';
+      list.checkboxStatus = allChecked ? 'true' : noneChecked ? '' : 'part';
   },
   },
   getters: { 

@@ -1,7 +1,7 @@
 <template>
   <div class="list-item">
     <div>
-      <h3>{{ item.title }}</h3>
+      <h5>{{ item.title }}</h5>
       <app-checkbox :isChecked="item.isChecked" @check="check" />
     </div>
     <div>
@@ -34,7 +34,7 @@
       }
     },
     methods: {
-      toggleItemSelect(currentItem) {
+      /*toggleItemSelect(currentItem) {
         this.$store.commit('toggleItemSelected', currentItem);
 
         const selectValues = this.list.items.map(item => item.selected);
@@ -46,9 +46,8 @@
             this.$store.commit('setPartSelect', { currentList: this.list, value: true });
           }
         }
-      },
+      },*/
       check(checked) {
-        console.log(this.list.id)
         this.$store.commit('setItemChecked', { listId: this.list.id, itemId: this.item.id, checked });
       }
     }

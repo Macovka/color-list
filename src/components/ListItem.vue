@@ -5,8 +5,28 @@
       <app-checkbox :isChecked="item.isChecked" @check="check" />
     </div>
     <div>
-      <input type="number" :value="item.quantity" @input="changeQuantity($event.target.value)">
-      <input type="color" :value="item.color" @input="changeColor($event.target.value)">
+      <div v-if="!quantityEditing" @click="quantityEditing = true">
+        <span>{{ item.quantity }}</span>
+      </div>
+      <div v-else>
+        <input 
+          type="number" 
+          :value="item.quantity" 
+          @input="changeQuantity($event.target.value)" 
+          @blur="quantityEditing = false"
+        >
+      </div>
+      <div v-if="!colorEditing" @click="colorEditing = true">
+        <div class="square" :style="{ backgroundColor: item.color }"></div>
+      </div>
+      <div v-else>
+        <input 
+          type="color" 
+          :value="item.color" 
+          @input="changeColor($event.target.value)" 
+          @blur="colorEditing = false"
+        >
+      </div> 
     </div>
   </div>
 </template>
@@ -21,6 +41,12 @@
       item: {
         type: Object,
         required: true
+      }
+    },
+    data() {
+      return {
+        quantityEditing: false,
+        colorEditing: false,
       }
     },
     methods: {
@@ -42,5 +68,11 @@
 .list-item {
   display: flex;
   justify-content: space-between;
+}
+
+.square {
+  width: 10px;
+	height: 10px;
+  margin-right: 2px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="left-panel">
-    <div v-for="list in lists" :key="list">
+    <div v-for="list in lists" :key="list.id">
       <list-dropdown :list="list" />
     </div>
   </div>

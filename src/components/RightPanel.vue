@@ -2,7 +2,7 @@
   <div class="right-panel">
     <div 
       v-for="list in lists" 
-      :key="list"
+      :key="list.id"
     >
       <list-block :list="list" />
     </div>

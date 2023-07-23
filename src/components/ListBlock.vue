@@ -4,12 +4,12 @@
       {{ list.title }}
       <button>Премешать</button>
     </div>
-    <div v-if="list.selected">
+    <div v-if="list.checkboxStatus === 'true' || 'part'">
       <div 
         v-for="item in list.items" 
-        :key="item" 
+        :key="item.id" 
       >
-      <div v-if="item.selected" class="list-block__squares">
+      <div v-if="item.isChecked" class="list-block__squares">
         <div
           v-for="index in item.quantity" 
           :key="index"

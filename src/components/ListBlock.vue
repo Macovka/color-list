@@ -1,26 +1,42 @@
 <template>
   <div class="list-block">
-    <div class="list-block__title-wrapper">
-      {{ list.title }}
-      <button v-if="!shuffled" @click="shuffleSquares(shuffledArray)">Перемешать</button>
-      <button v-else @click="sortSquares">Сортировать</button>
+    <div class="list-block__header">
+      <h5 class="list-block__title"> {{ list.title }}</h5>
+      <button 
+        v-if="!shuffled" 
+        class="list-block__action-btn"
+        @click="shuffleSquares(shuffledArray)"
+      >
+        Перемешать
+      </button>
+      <button 
+        v-else 
+        class="list-block__action-btn"
+        @click="sortSquares"
+      >
+        Сортировать
+      </button>
     </div>
-    <div v-if="list.checkboxStatus === 'true' || 'part'">
+    <div 
+      v-if="list.checkboxStatus === 'true' || list.checkboxStatus === 'part'"
+      class="list-block__content"
+    >
       <div 
+        class="list-block__squares-wrap"
         v-for="item in list.items" 
         :key="item.id" 
       >
-        <div v-if="item.isChecked">
-          <div v-if="!shuffled" class="list-block__squares">
-            <div
-              v-for="(square, index) in selectedSquares(item)" 
-              :key="index"
-              class="square" 
-              :style="{ backgroundColor: item.color }"
-              @click="deleteSquare(item)"
-            ></div>
-          </div>  
-        </div>
+        <div v-if="item.isChecked && !shuffled" 
+          class="list-block__squares"
+        >
+          <div
+            v-for="(square, index) in selectedSquares(item)" 
+            :key="index"
+            class="square" 
+            :style="{ backgroundColor: item.color }"
+            @click="deleteSquare(item)"
+          ></div>
+        </div>  
       </div>
       <div v-if="shuffled" class="list-block__squares">
         <div
@@ -118,23 +134,60 @@
 
 <style lang="scss" scoped>
 .list-block {
-  border: 1px solid black;
-  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.35);
+  padding: 20px;
 
-  &__title-wrapper {
+  &__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  &__action-btn {
+    color: #fff;
+    background-color: #337ab7;
+    border: none;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+
+  &__content {
+    margin-top: 10px;
+  }
+
+  &__squares-wrap {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__squares {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }
 
 .square {
-  width: 10px;
-	height: 10px;
-  margin-right: 2px;
+  width: 20px;
+	height: 20px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 </style>

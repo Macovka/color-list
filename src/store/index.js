@@ -162,8 +162,15 @@ const store = createStore({
     changeColor(state, payload) {
       payload.item.color = payload.value;
     },
-    quantityDecrement(state, item) {
-      item.quantity--;
+    quantityDecrement(state, payload) {
+      const { listId, itemId } = payload;
+      const list = state.lists.find((list) => list.id === listId);
+      if (list) {
+        const item = list.items.find((item) => item.id === itemId);
+        if (item) {
+          item.quantity--;
+        }
+      }
     }
   },
   getters: { 

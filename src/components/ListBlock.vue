@@ -97,15 +97,20 @@
       },
       deleteSquare(item) {
         if (this.shuffled) {
-          console.log(this.shuffledArray)
           const id = item.id;
-          console.log(id)
-          const shuffeleItem = this.shuffledArray.find(item => item.id === id);
-          console.log(shuffeleItem)
-          this.$store.commit('quantityDecrement', shuffeleItem);
+          const shuffledItem = this.shuffledArray.find((item) => item.id === id);
+          if (shuffledItem) {
+            this.$store.commit('quantityDecrement', {
+              listId: this.list.id,
+              itemId: shuffledItem.id
+            });
+          }
         } else {
-          this.$store.commit('quantityDecrement', item);
-        }        
+          this.$store.commit('quantityDecrement', {
+            listId: this.list.id,
+            itemId: item.id
+          });
+        }
       }
     }
   }

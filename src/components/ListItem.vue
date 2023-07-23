@@ -5,7 +5,7 @@
       <app-checkbox :isChecked="item.isChecked" @check="check" />
     </div>
     <div>
-      <input type="number" :value="item.quantity">
+      <input type="number" :value="item.quantity" @input="changeQuantity($event.target.value)">
       <input type="color" :value="item.color">
     </div>
   </div>
@@ -26,6 +26,9 @@
     methods: {
       check(checked) {
         this.$store.commit('setItemChecked', { listId: this.list.id, itemId: this.item.id, checked });
+      },
+      changeQuantity(value) {
+        this.$store.commit('changeQuantity', { item: this.item, value });
       }
     }
   }

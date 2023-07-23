@@ -11,8 +11,8 @@
       >
       <div v-if="item.isChecked" class="list-block__squares">
         <div
-          v-for="index in item.quantity" 
-          :key="index"
+          v-for="n in +item.quantity" 
+          :key="n + Date.now()"
           class="square" 
           :style="{ backgroundColor: item.color }"
         ></div>

@@ -146,24 +146,6 @@ const store = createStore({
     ],
   },
   mutations: { 
-    toggleListSelected(state, currentList) {
-      currentList.selected = !currentList.selected;
-    },
-    setListSelectValue(state, payload) {
-      const { currentList, value } = payload;
-      currentList.selected = value;
-    },
-    toggleItemSelected(state, currentItem) {
-      currentItem.selected = !currentItem.selected;
-    },
-    setItemSelectValue(state, payload) {
-      const { currentList, value } = payload;
-      currentList.items.forEach(item => item.selected = value);
-    },
-    setPartSelect(state, payload) {
-      const { currentList, value } = payload;
-      currentList.partSelect = value;
-    },
     setItemChecked(state, payload) {
       let { listId, itemId, checked } = payload;
       let list = state.lists.find(list => list.id === listId);
@@ -173,7 +155,10 @@ const store = createStore({
       let allChecked = list.items.every(item => item.isChecked);
       let noneChecked = list.items.every(item => !item.isChecked);
       list.checkboxStatus = allChecked ? 'true' : noneChecked ? '' : 'part';
-  },
+    },
+    changeQuantity(state, payload) {
+      payload.item.quantity = payload.value
+    }
   },
   getters: { 
     

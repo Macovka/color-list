@@ -1,17 +1,17 @@
 <template>
-  <div class="list-block">
-    <div class="list-block__header">
-      <h5 class="list-block__title"> {{ list.title }}</h5>
+  <div class="right-panel-block">
+    <div class="right-panel-block__header">
+      <h5 class="right-panel-block__title"> {{ list.title }}</h5>
       <button 
         v-if="!shuffled" 
-        class="list-block__action-btn"
+        class="right-panel-block__action-btn"
         @click="shuffleSquares(shuffledArray)"
       >
         Перемешать
       </button>
       <button 
         v-else 
-        class="list-block__action-btn"
+        class="right-panel-block__action-btn"
         @click="sortSquares"
       >
         Сортировать
@@ -19,15 +19,15 @@
     </div>
     <div 
       v-if="list.checkboxStatus === 'true' || list.checkboxStatus === 'part'"
-      class="list-block__content"
+      class="right-panel-block__content"
     >
       <div 
-        class="list-block__squares-wrap"
+        class="right-panel-block__squares-wrap"
         v-for="item in list.items" 
         :key="item.id" 
       >
         <div v-if="item.isChecked && !shuffled" 
-          class="list-block__squares"
+          class="right-panel-block__squares"
         >
           <div
             v-for="(square, index) in selectedSquares(item)" 
@@ -38,7 +38,7 @@
           ></div>
         </div>  
       </div>
-      <div v-if="shuffled" class="list-block__squares">
+      <div v-if="shuffled" class="right-panel-block__squares">
         <div
           v-for="(item, index) in shuffledArray" 
           :key="index"
@@ -65,14 +65,12 @@
       }
     },
     computed: {
-      // Функция для вычисления выбранных квадратиков для конкретного элемента
       selectedSquares() {
         return (item) => {
-          // Создаем новый массив для хранения выбранных квадратиков
+          // New array for storage selected squares
           const squares = [];
-          // Получаем количество выбранного элемента
+          // Quantity of cheked items
           const quantity = +item.quantity;
-          // Генерируем объекты с свойствами id и color для каждого квадратика
           for (let i = 0; i < quantity; i++) {
             squares.push({ id: item.id, color: item.color });
           }
@@ -83,8 +81,8 @@
         return this.list.items.filter((item) => item.isChecked);
       },
       shuffledArray() {
-        // Создание массива объектов, где каждый объект представляет элемент item,
-        // и количество объектов для каждого элемента равно его свойству quantity
+        // An array of objects, where each object represents an item,
+        // and the number of objects for each element is equal to its quantity property
         const commonArray = [];
         this.checkedItems.forEach((item) => {
           const quantity = item.quantity;
@@ -92,16 +90,15 @@
             commonArray.push({ id: item.id, color: item.color });
           }
         })
-        this.shuffleSquares(commonArray); // Перемешиваем копию
+        this.shuffleSquares(commonArray);
         return commonArray;
       }
     },
     methods: {
       shuffleSquares(array) {     
         this.shuffled = true;
-        // Создаем копию массива для избежания побочных эффектов
         const shuffledArray = array.slice();
-        // Тасование Фишера — Йетса
+        // Fisher-Yates shuffle
         for (let i = array.length - 1; i > 0; i--) {
           let j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
@@ -133,7 +130,7 @@
 </script>
 
 <style lang="scss" scoped>
-.list-block {
+.right-panel-block {
   border-radius: 10px;
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.35);
   padding: 20px;

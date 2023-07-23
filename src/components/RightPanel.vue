@@ -4,17 +4,17 @@
       v-for="list in lists" 
       :key="list.id"
     >
-      <list-block :list="list" />
+      <right-panel-block :list="list" />
     </div>
   </div>
 </template>
 
 <script>
-  import ListBlock from '@/components/ListBlock.vue'
+  import RightPanelBlock from '@/components/RightPanelBlock.vue'
 
   export default {
     components: {
-      ListBlock
+      RightPanelBlock
     },
     computed: {
       lists () {

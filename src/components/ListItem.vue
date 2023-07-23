@@ -28,25 +28,7 @@
         required: true
       }
     },
-    computed: {
-      partSelect () {
-        return this.list.partSelect
-      }
-    },
     methods: {
-      /*toggleItemSelect(currentItem) {
-        this.$store.commit('toggleItemSelected', currentItem);
-
-        const selectValues = this.list.items.map(item => item.selected);
-        const isAnySelected = selectValues.includes(true);
-        const isAnyUnselected = selectValues.includes(false);
-
-        if (isAnySelected) {
-          if (isAnyUnselected) {
-            this.$store.commit('setPartSelect', { currentList: this.list, value: true });
-          }
-        }
-      },*/
       check(checked) {
         this.$store.commit('setItemChecked', { listId: this.list.id, itemId: this.item.id, checked });
       }

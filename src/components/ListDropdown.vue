@@ -35,12 +35,6 @@
       }
     },
     computed: {
-      items () {
-        return this.list.items;
-      },
-      partSelect () {
-        return this.list.partSelect;
-      },
       checkboxStatus() {
         return this.list.checkboxStatus;
       }
@@ -53,43 +47,8 @@
       },
       toggleList() {
         this.isOpen = !this.isOpen;
-      },
-      /*toggleListSelect() {
-        if (this.list.selected) {
-          if (this.partSelect) {
-            this.$store.commit('setItemSelectValue', { currentList: this.list, value: true });
-          } else {
-            this.$store.commit('setListSelectValue', { currentList: this.list, value: false });
-          this.$store.commit('setItemSelectValue', { currentList: this.list, value: false });
-          }         
-        } else {
-          this.$store.commit('setListSelectValue', { currentList: this.list, value: true });
-          this.$store.commit('setItemSelectValue', { currentList: this.list, value: true });
-        }
-      }*/
-    },
-    watch: {
-      /*list: {
-        handler(newList) {
-          const selectValues = newList.items.map(item => item.selected);
-          const isAnyUnselect = selectValues.includes(false);
-          const isAnySelected = selectValues.includes(true);
-
-          if (!isAnyUnselect) {
-            this.$store.commit('setPartSelect', { currentList: this.list, value: false });
-            if (!newList.selected) {
-              this.$store.commit('setListSelectValue', { currentList: this.list, value: true });
-            }
-          } else if (!isAnySelected) {
-            this.$store.commit('setPartSelect', { currentList: this.list, value: false });
-            if (newList.selected) {
-              this.$store.commit('setListSelectValue', { currentList: this.list, value: false });
-            }
-          }
-        },
-        deep: true
-      }*/
-    },
+      }
+    }
   }
 </script>
 

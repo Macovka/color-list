@@ -6,8 +6,6 @@ const store = createStore({
       {
         title: 'List 1',
         id: 1,
-        selected: false,
-        partSelect: false,
         checkboxStatus: '',
         items: [
           {
@@ -15,7 +13,6 @@ const store = createStore({
             id: 1,
             quantity: 10,
             color: '#f50505',
-            selected: false,
             isChecked: false,
           },
           {
@@ -23,7 +20,6 @@ const store = createStore({
             id: 2,
             quantity: 16,
             color: '#FFFF06',
-            selected: false,
             isChecked: false,
           },
           {
@@ -31,7 +27,6 @@ const store = createStore({
             id: 3,
             quantity: 40,
             color: '#48FF06',
-            selected: false,
             isChecked: false,
           },
           {
@@ -39,7 +34,6 @@ const store = createStore({
             id: 4,
             quantity: 0,
             color: '#0616FF',
-            selected: false,
             isChecked: false,
           }
         ]
@@ -47,8 +41,6 @@ const store = createStore({
       {
         title: 'List 2',
         id: 2,
-        selected: false,
-        partSelect: false,
         checkboxStatus: '',
         items: [
           {
@@ -56,7 +48,6 @@ const store = createStore({
             id: 1,
             quantity: 10,
             color: '#f50505',
-            selected: false,
             isChecked: false,
           },
           {
@@ -64,7 +55,6 @@ const store = createStore({
             id: 2,
             quantity: 16,
             color: '#FFFF06',
-            selected: false,
             isChecked: false,
           },
           {
@@ -72,14 +62,13 @@ const store = createStore({
             id: 3,
             quantity: 40,
             color: '#48FF06',
-            selected: false
+            isChecked: false
           },
           {
             title: 'Item 4',
             id: 4,
             quantity: 0,
             color: '#0616FF',
-            selected: false,
             isChecked: false,
           }
         ]
@@ -87,8 +76,6 @@ const store = createStore({
       {
         title: 'List 3',
         id: 3,
-        selected: false,
-        partSelect: false,
         checkboxStatus: '',
         items: [
           {
@@ -96,7 +83,6 @@ const store = createStore({
             id: 1,
             quantity: 10,
             color: '#f50505',
-            selected: false,
             isChecked: false,
           },
           {
@@ -104,14 +90,13 @@ const store = createStore({
             id: 2,
             quantity: 16,
             color: '#FFFF06',
-            selected: false
+            isChecked: false
           },
           {
             title: 'Item 3',
             id: 3,
             quantity: 40,
             color: '#48FF06',
-            selected: false,
             isChecked: false,
           },
           {
@@ -119,7 +104,6 @@ const store = createStore({
             id: 4,
             quantity: 0,
             color: '#0616FF',
-            selected: false,
             isChecked: false,
           }
         ]
@@ -127,8 +111,6 @@ const store = createStore({
       {
         title: 'List 4',
         id: 4,
-        selected: false,
-        partSelect: false,
         checkboxStatus: '',
         items: [
           {
@@ -136,7 +118,6 @@ const store = createStore({
             id: 1,
             quantity: 10,
             color: '#f50505',
-            selected: false,
             isChecked: false,
           },
           {
@@ -144,7 +125,6 @@ const store = createStore({
             id: 2,
             quantity: 16,
             color: '#FFFF06',
-            selected: false,
             isChecked: false,
           },
           {
@@ -152,7 +132,6 @@ const store = createStore({
             id: 3,
             quantity: 40,
             color: '#48FF06',
-            selected: false,
             isChecked: false,
           },
           {
@@ -160,7 +139,6 @@ const store = createStore({
             id: 4,
             quantity: 0,
             color: '#0616FF',
-            selected: false,
             isChecked: false,
           }
         ]

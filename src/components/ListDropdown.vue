@@ -16,12 +16,10 @@
 
 <script>
   import ListItem from './ListItem.vue';
-  import AppCheckbox from '@/components/UI/AppCheckbox.vue';
 
   export default {
     components: {
       ListItem,
-      AppCheckbox
     },
     props: {
       list: {

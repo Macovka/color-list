@@ -12,12 +12,7 @@
 </template>
 
 <script>
-  import AppCheckbox from '@/components/UI/AppCheckbox.vue';
-
   export default {
-    components: {
-      AppCheckbox
-    },
     props: {
       list: {
         type: Object,

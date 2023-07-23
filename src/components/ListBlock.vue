@@ -2,8 +2,8 @@
   <div class="list-block">
     <div class="list-block__title-wrapper">
       {{ list.title }}
-      <button @click="shuffleSquares(shuffledArray)">Перемешать</button>
-      <button @click="sortSquares">Сортировать</button>
+      <button v-if="!shuffled" @click="shuffleSquares(shuffledArray)">Перемешать</button>
+      <button v-else @click="sortSquares">Сортировать</button>
     </div>
     <div v-if="list.checkboxStatus === 'true' || 'part'">
       <div 

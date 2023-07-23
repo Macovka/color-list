@@ -4,19 +4,11 @@
       <span v-if="!isOpen">></span>
       <span v-else>˅</span>
     </div>
-    <div>
-      <label>
-        <input type="checkbox" 
-          :checked="list.selected" 
-          @change="toggleListSelect"
-          :class="{dot: list.partSelect}"
-        >
-        {{ list.title }}
-      </label>
-    </div>   
+    <app-checkbox :isChecked="checkboxStatus === 'true'" :isIndeterminate="checkboxStatus === 'part'" @check="checkList" />
+    <h2>{{ list.title }}</h2>
   </div>
   <div v-if="isOpen">
-    <div v-for="item in list.items" :key="item">
+    <div v-for="item in list.items" :key="item.id">
       <list-item :item="item" :list="list"/>
     </div>
   </div>
@@ -24,10 +16,12 @@
 
 <script>
   import ListItem from './ListItem.vue';
+  import AppCheckbox from '@/components/UI/AppCheckbox.vue';
 
   export default {
     components: {
-      ListItem
+      ListItem,
+      AppCheckbox
     },
     props: {
       list: {
@@ -46,9 +40,19 @@
       },
       partSelect () {
         return this.list.partSelect;
+      },
+      checkboxStatus() {
+        return this.list.checkboxStatus;
       }
     },
     methods: {
+      checkList(checked) {
+        // Here you can handle checking/unchecking the whole list
+        // Call Vuex mutation for each item
+        this.list.items.forEach(item => {
+          this.$store.commit('setItemChecked', { listId: this.list.id, itemId: item.id, checked });
+        });
+      },
       toggleList() {
         this.isOpen = !this.isOpen;
       },
@@ -67,7 +71,7 @@
       }
     },
     watch: {
-      list: {
+      /*list: {
         handler(newList) {
           const selectValues = newList.items.map(item => item.selected);
           const isAnyUnselect = selectValues.includes(false);
@@ -86,7 +90,7 @@
           }
         },
         deep: true
-      }
+      }*/
     },
   }
 </script>

@@ -1,14 +1,8 @@
 <template>
   <div class="list-item">
     <div>
-      <label>
-        <input 
-          type="checkbox" 
-          :checked="item.selected"
-          @change="toggleItemSelect(item)"
-        >
-        {{ item.title }}
-      </label>
+      <h3>{{ item.title }}</h3>
+      <app-checkbox :isChecked="item.isChecked" @check="check" />
     </div>
     <div>
       <input type="number" :value="item.quantity">
@@ -18,7 +12,12 @@
 </template>
 
 <script>
+  import AppCheckbox from '@/components/UI/AppCheckbox.vue';
+
   export default {
+    components: {
+      AppCheckbox
+    },
     props: {
       list: {
         type: Object,
@@ -47,6 +46,10 @@
             this.$store.commit('setPartSelect', { currentList: this.list, value: true });
           }
         }
+      },
+      check(checked) {
+        console.log(this.list.id)
+        this.$store.commit('setItemChecked', { listId: this.list.id, itemId: this.item.id, checked });
       }
     }
   }

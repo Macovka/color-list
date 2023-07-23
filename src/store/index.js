@@ -312,12 +312,6 @@ const store = createStore({
         }
       }
     }
-  },
-  getters: { 
-    
-  },
-  actions: {
-
   }
 })
 

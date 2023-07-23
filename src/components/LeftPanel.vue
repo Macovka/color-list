@@ -23,7 +23,12 @@
 
 <style scoped>
 .left-panel {
-  border: 1px solid black;
   padding: 20px;
+  flex: 1 1 50%;
+  border-radius: 10px;
+  box-shadow: 0 2px 7px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 </style>

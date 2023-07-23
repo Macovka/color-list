@@ -25,13 +25,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 .panels-wrapper {
   display: flex;
-  justify-content: space-between;
-  border: 1px solid black;
-  padding: 20px;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 60px 20px 0;
 }
 </style>

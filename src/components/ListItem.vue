@@ -1,24 +1,25 @@
 <template>
   <div class="list-item">
-    <div>
-      <h5>{{ item.title }}</h5>
-      <app-checkbox :isChecked="item.isChecked" @check="check" />
+    <div class="list-item__title-wrap">
+      <h5 class="list-item__title">{{ item.title }}</h5>
+      <app-checkbox 
+        class="list-item__checkbox"
+        :isChecked="item.isChecked" 
+        @check="check" 
+      />
     </div>
     <div class="list-item__editing-properties">
-      <div>
-        <input 
-          type="number" 
-          :value="item.quantity" 
-          @input="changeQuantity($event.target.value)"
-        >
-      </div>
-      <div>
-        <input 
-          type="color" 
-          :value="item.color" 
-          @input="changeColor($event.target.value)"
-        >
-      </div> 
+      <input 
+        class="list-item__count-input"
+        type="number" 
+        :value="item.quantity" 
+        @input="changeQuantity($event.target.value)"
+      >
+      <input 
+        type="color" 
+        :value="item.color" 
+        @input="changeColor($event.target.value)"
+      >
     </div>
   </div>
 </template>
@@ -55,15 +56,28 @@
   display: flex;
   justify-content: space-between;
 
+  &__title-wrap {
+    display: flex;
+  }
+
+  &__title {
+    margin: 0 10px 0 0;
+    font-size: 18px;
+  }
+
+  &__checkbox {
+    font-size: 18px;
+  }
+
   &__editing-properties {
     display: flex;
     justify-content: space-between;
   }
-}
 
-.square {
-  width: 10px;
-	height: 10px;
-  margin-right: 2px;
+  &__count-input{
+    font-size: 16px;
+    margin-right: 10px;
+    width: 100px;
+  }
 }
 </style>

@@ -157,7 +157,7 @@ const store = createStore({
       list.checkboxStatus = allChecked ? 'true' : noneChecked ? '' : 'part';
     },
     changeQuantity(state, payload) {
-      payload.item.quantity = payload.value
+      payload.item.quantity = payload.value;
     }
   },
   getters: { 

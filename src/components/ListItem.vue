@@ -28,6 +28,7 @@
         this.$store.commit('setItemChecked', { listId: this.list.id, itemId: this.item.id, checked });
       },
       changeQuantity(value) {
+        value = Math.max(0, value);
         this.$store.commit('changeQuantity', { item: this.item, value });
       }
     }

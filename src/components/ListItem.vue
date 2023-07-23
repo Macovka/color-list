@@ -4,7 +4,7 @@
       <h5>{{ item.title }}</h5>
       <app-checkbox :isChecked="item.isChecked" @check="check" />
     </div>
-    <div>
+    <div class="list-item__editing-properties">
       <div v-if="!quantityEditing" @click="quantityEditing = true">
         <span>{{ item.quantity }}</span>
       </div>
@@ -64,10 +64,15 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .list-item {
   display: flex;
   justify-content: space-between;
+
+  &__editing-properties {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .square {

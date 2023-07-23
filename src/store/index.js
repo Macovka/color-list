@@ -161,6 +161,9 @@ const store = createStore({
     },
     changeColor(state, payload) {
       payload.item.color = payload.value;
+    },
+    quantityDecrement(state, item) {
+      item.quantity--;
     }
   },
   getters: { 

@@ -17,6 +17,7 @@
               :key="index"
               class="square" 
               :style="{ backgroundColor: item.color }"
+              @click="deleteSquare(item)"
             ></div>
           </div>  
         </div>
@@ -27,6 +28,7 @@
           :key="index"
           class="square" 
           :style="{ backgroundColor: item.color }"
+          @click="deleteSquare(item)"
         ></div>
       </div> 
     </div>
@@ -80,16 +82,30 @@
     },
     methods: {
       shuffleSquares(array) {     
+        this.shuffled = true;
+        // Создаем копию массива для избежания побочных эффектов
+        const shuffledArray = array.slice();
         // Тасование Фишера — Йетса
         for (let i = array.length - 1; i > 0; i--) {
           let j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
         }
-
-        this.shuffled = true;
+        return shuffledArray;
       },
       sortSquares() {
         this.shuffled = false;
+      },
+      deleteSquare(item) {
+        if (this.shuffled) {
+          console.log(this.shuffledArray)
+          const id = item.id;
+          console.log(id)
+          const shuffeleItem = this.shuffledArray.find(item => item.id === id);
+          console.log(shuffeleItem)
+          this.$store.commit('quantityDecrement', shuffeleItem);
+        } else {
+          this.$store.commit('quantityDecrement', item);
+        }        
       }
     }
   }

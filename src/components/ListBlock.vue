@@ -2,7 +2,7 @@
   <div class="list-block">
     <div class="list-block__title-wrapper">
       {{ list.title }}
-      <button @click="shuffleSquares(commonArray)">Перемешать</button>
+      <button @click="shuffleSquares(shuffledArray)">Перемешать</button>
       <button @click="sortSquares">Сортировать</button>
     </div>
     <div v-if="list.checkboxStatus === 'true' || 'part'">
@@ -23,7 +23,7 @@
       </div>
       <div v-if="shuffled" class="list-block__squares">
         <div
-          v-for="(item, index) in commonArray" 
+          v-for="(item, index) in shuffledArray" 
           :key="index"
           class="square" 
           :style="{ backgroundColor: item.color }"
@@ -64,7 +64,7 @@
       checkedItems() {
         return this.list.items.filter((item) => item.isChecked);
       },
-      commonArray() {
+      shuffledArray() {
         // Создание массива объектов, где каждый объект представляет элемент item,
         // и количество объектов для каждого элемента равно его свойству quantity
         const commonArray = [];
@@ -74,8 +74,8 @@
             commonArray.push({ id: item.id, color: item.color });
           }
         })
-          this.shuffleSquares(commonArray); 
-          return commonArray;
+        this.shuffleSquares(commonArray); // Перемешиваем копию
+        return commonArray;
       }
     },
     methods: {

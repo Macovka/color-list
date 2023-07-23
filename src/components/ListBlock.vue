@@ -23,8 +23,8 @@
       </div>
       <div v-if="shuffled" class="list-block__squares">
         <div
-          v-for="item in commonArray" 
-          :key="item.color"
+          v-for="(item, index) in commonArray" 
+          :key="index"
           class="square" 
           :style="{ backgroundColor: item.color }"
         ></div>
@@ -65,7 +65,7 @@
         return this.list.items.filter((item) => item.isChecked);
       },
       commonArray() {
-        // Создание массив объектов, где каждый объект представляет элемент item,
+        // Создание массива объектов, где каждый объект представляет элемент item,
         // и количество объектов для каждого элемента равно его свойству quantity
         const commonArray = [];
         this.checkedItems.forEach((item) => {
@@ -73,8 +73,9 @@
           for (let i = 0; i < quantity; i++) {
             commonArray.push({ id: item.id, color: item.color });
           }
-        });
-        return commonArray;
+        })
+          this.shuffleSquares(commonArray); 
+          return commonArray;
       }
     },
     methods: {
@@ -84,7 +85,7 @@
           let j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
         }
-        
+
         this.shuffled = true;
       },
       sortSquares() {

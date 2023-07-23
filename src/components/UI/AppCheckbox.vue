@@ -8,7 +8,6 @@
       :checked="isChecked" 
       :indeterminate="isIndeterminate" 
       @change="check"
-      @change.stop.prevent="check"
       @click.stop
       class="checkbox__input" 
     />

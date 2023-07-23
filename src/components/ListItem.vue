@@ -6,7 +6,7 @@
     </div>
     <div>
       <input type="number" :value="item.quantity" @input="changeQuantity($event.target.value)">
-      <input type="color" :value="item.color">
+      <input type="color" :value="item.color" @input="changeColor($event.target.value)">
     </div>
   </div>
 </template>
@@ -30,6 +30,9 @@
       changeQuantity(value) {
         value = Math.max(0, value);
         this.$store.commit('changeQuantity', { item: this.item, value });
+      },
+      changeColor(value) {
+        this.$store.commit('changeColor', { item: this.item, value });
       }
     }
   }

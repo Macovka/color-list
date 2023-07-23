@@ -158,6 +158,9 @@ const store = createStore({
     },
     changeQuantity(state, payload) {
       payload.item.quantity = payload.value;
+    },
+    changeColor(state, payload) {
+      payload.item.color = payload.value;
     }
   },
   getters: { 

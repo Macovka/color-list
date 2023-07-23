@@ -3,6 +3,7 @@
     <div class="list-block__title-wrapper">
       {{ list.title }}
       <button>Премешать</button>
+      <button>Премешать</button>
     </div>
     <div v-if="list.checkboxStatus === 'true' || 'part'">
       <div 
@@ -11,8 +12,8 @@
       >
       <div v-if="item.isChecked" class="list-block__squares">
         <div
-          v-for="n in +item.quantity" 
-          :key="n + Date.now()"
+          v-for="(square, index) in selectedSquares(item)" 
+          :key="index"
           class="square" 
           :style="{ backgroundColor: item.color }"
         ></div>
@@ -29,7 +30,23 @@
         type: Object,
         required: true
       }
-    }
+    },
+    computed: {
+      // Функция для вычисления выбранных квадратиков для конкретного элемента
+      selectedSquares() {
+        return (item) => {
+          // Создаем новый массив для хранения выбранных квадратиков
+          const squares = [];
+          // Получаем количество выбранного элемента
+          const quantity = +item.quantity;
+          // Генерируем объекты с свойствами id и color для каждого квадратика
+          for (let i = 0; i < quantity; i++) {
+            squares.push({ id: item.id, color: item.color });
+          }
+          return squares;
+        };
+      },
+    },
   }
 </script>
 

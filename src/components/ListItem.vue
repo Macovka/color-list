@@ -14,6 +14,7 @@
         type="number" 
         :value="item.quantity" 
         @input="changeQuantity($event.target.value)"
+        min="0"
       >
       <input 
         type="color" 
@@ -78,6 +79,10 @@
     font-size: 16px;
     margin-right: 10px;
     width: 100px;
+    &:invalid {
+      border:1px solid red;
+      border-radius: 2px;
+    }
   }
 }
 </style>
